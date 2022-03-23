@@ -357,17 +357,38 @@ template {
   font-size: 1.25rem;
 }
 
-.ns-menu__item {
-  text-decoration: none;
-  text-transform: uppercase;
-  font-family: "Roboto Bold", sans-serif;
-  font-size: 1.25rem;
-}
-
 .ns-menu__box {
-  max-width: 75rem;
-  margin: auto;
   display: flex;
   justify-content: space-between;
+  max-width: 75rem;
+  margin: auto;
+  flex-direction: column;
+}
+@media only screen and (min-width: 576px) {
+  .ns-menu__box {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+.ns-menu__item {
+  text-align: center;
+  padding: 0.625rem;
+  transition: all 400ms;
+}
+.ns-menu__item:link {
+  color: #665600;
+  background: #0e0e0e;
+  text-decoration: underline;
+}
+.ns-menu__item:visited {
+  text-decoration: underline;
+}
+.ns-menu__item:hover {
+  color: gold;
+  background: silver;
+  text-decoration: underline;
+}
+.ns-menu__item:active {
+  text-decoration: underline;
 }
 /*# sourceMappingURL=main.css.map */

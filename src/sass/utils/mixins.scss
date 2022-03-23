@@ -1,7 +1,46 @@
-@mixin font-face ($family, $font-file, $path: $font-path) {
+@use "sass:map";
+
+@mixin font-face($family, $font-file, $path: $font-path) {
   font-family: $family;
   src: url('#{$path}#{$font-file}.woff2') format('woff2'),
   url('#{$path}#{$font-file}.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+}
+
+
+@mixin mq($breakpoint) {
+  $bp-value: map.get($grid-breakpoints, $breakpoint);
+
+  @if $bp-value==null {
+    $bp-value: 0;
+    @warn "Breakpoint: #{$breakpoint} is undefined. Check variables.scss and $grid-breakpoints map for correct value."
+  }
+
+  @media only screen and (min-width: $bp-value) {
+    @content;
+  }
+}
+
+
+@mixin link-action($color, $bg-color) {
+  &:link {
+    color: darken($color, 30%);
+    background: darken($bg-color, 70%);
+    @content
+  }
+
+  &:visited {
+    @content
+  }
+
+  &:hover {
+    color: $color;
+    background: $bg-color;
+    @content
+  }
+
+  &:active {
+    @content
+  }
 }

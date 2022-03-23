@@ -1,15 +1,28 @@
 @use "../partials/partials";
+@import "../utils/mixins";
+
 
 .ns-menu {
   &__box {
-    max-width: toRem(1200);
-    margin: auto;
     display: flex;
     justify-content: space-between;
+    max-width: toRem(1200);
+    margin: auto;
+    flex-direction: column;
+    @include mq(sm) {
+      flex-direction: row;
+      align-items: center;
+    }
   }
 
   &__item {
     @extend %link;
+    text-align: center;
+    padding: toRem(10);
+    transition: all 400ms;
+    @include link-action(gold, silver) {
+      text-decoration: underline;
+    }
   }
 
   &__item--active {
