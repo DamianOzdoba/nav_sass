@@ -2,5 +2,10 @@
 
 @import "variables";
 @import "utils/functions";
+@import "utils/mixins";
+
+@import "typography/typing";
+
+@import "partials/partials";
 
 @import "components/menu";
